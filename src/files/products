@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Adidas shoes",
+    "price": 3,
+    "thumbnail": "http://localhost:8080/img/1646611644313-large.png",
+    "id": 1
+  },
+  {
+    "name": "Adidas shirt",
+    "price": 245,
+    "thumbnail": "http://localhost:8080/img/1646611653322-large.png",
+    "id": 2
+  },
+  {
+    "name": "Adidas pant",
+    "price": 43,
+    "thumbnail": "http://localhost:8080/img/1646611655840-large.png",
+    "id": 3
+  },
+  {
+    "name": "Adidas bag",
+    "price": 67,
+    "thumbnail": "http://localhost:8080/img/1646616549868-large.png",
+    "id": 4
+  },
+  {
+    "name": "T Shirt",
+    "price": 100,
+    "thumbnail": "http://localhost:8080/img/1648666649524-$.jpg",
+    "id": 5
+  },
+  {
+    "name": "T Shirt",
+    "price": 100,
+    "thumbnail": "http://localhost:8080/img/1648683551882-$.jpg",
+    "id": 6
+  }
+]

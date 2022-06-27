@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    color: #124;
+    background-image: 
+        radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw),
+        radial-gradient(rgba(green, 0.3), rgba(green, 0) 40vw),
+        radial-gradient(rgba(blue, 0.3), rgba(blue, 0) 40vw),
+        radial-gradient(rgba(yellow, 0.3), rgba(yellow, 0) 40vw),
+        radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw);
+    background-position:
+        -40vw 14rem,
+        50% 10rem,
+        60vw 14rem,
+        -10vw calc(14rem + 20vw),
+        30vw calc(14rem + 20vw);
+      background-size: 80vw 80vw;
+      background-repeat: no-repeat;
+  }
+
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileImg {
+    max-width: 200px;
+    height:auto;
+}
