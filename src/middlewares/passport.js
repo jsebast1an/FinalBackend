@@ -42,16 +42,20 @@ passport.use('signup', new LocalStrategy(
     }
 ))
 /* LOGIN */
+async function comparePassword(plaintextPassword, hash) {
+    const result = await bcrypt.compare(plaintextPassword, hash);
+    console.log(result);
+    return result;
+}
+
 passport.use('login', new LocalStrategy(
     async (username, password, done) => {
         //busco si el usuario existe
         console.log(username + password);
         try {
             const [userFound] = await userModel.find({username})
-            console.log(userFound);
-            /* const [passFound] = await userModel.find({password}) */
             if(userFound) {
-                if(!bcrypt.compare(password, userFound.password)) return done(null, false, {error:'error en contraseña'})
+                if(!comparePassword(password, userFound.password)) { done(null, false, {error:'error en contraseña'})}
                 done(null, userFound)
             } else {
                 done(null, false, {message:'no llegó'})
