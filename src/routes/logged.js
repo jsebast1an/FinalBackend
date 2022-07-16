@@ -1,7 +1,3 @@
-/* const express = require('express')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')
-const path = require('path') */
 import express from "express";
 import {io, __dirname} from "../app.js"
 import session from "express-session"

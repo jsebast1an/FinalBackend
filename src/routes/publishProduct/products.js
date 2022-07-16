@@ -1,7 +1,6 @@
 import express from "express"
 import session from "express-session"
 import MongoStore from "connect-mongo"
-import passport from "passport"
 import {io} from "../../app.js"
 import {__dirname} from "../../app.js"
 import dotenv from "dotenv"
@@ -22,9 +21,14 @@ router.use(session({
     }
 }))
 
-/* LOGIN */
+/* Products */
 router.get('/', (req, res)=> {
     let user = req.session.user
+    io.on('connection', socket => {
+        socket.on('sendProd', data => {
+            console.log(data)
+        })
+    }) 
     if(user) return res.sendFile('/public/html/products.html', { root: __dirname })
     res.redirect('/login')
 })

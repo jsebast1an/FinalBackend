@@ -7,7 +7,8 @@ const router = express.Router()
 /* CREATE PRODUCTO */
 router.post('/', uploader.single('file'), (req, res) => {
     let product = req.body
-    let file = req.file
+    let file = product.file
+    console.log(product)
     if(!file) return res.status(500).send({error:'Not uploaded file'})
     product.thumbnail = req.protocol+'://'+req.hostname+':8080/img/'+file.filename
     product.price = parseInt(product.price)

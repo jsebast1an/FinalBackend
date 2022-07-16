@@ -25,7 +25,17 @@ productsForm.addEventListener('submit', (e) => {
             }
         }
     } else {
+        e.preventDefault()
         socket.emit('sendProd', obj)
+        fetch('http://localhost:8080/api/products', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(obj), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .then(response => console.log('Success:', response))
+          .catch(error => console.error('Error:', error))
     }
 
     if (messages.length > 0) {
@@ -36,12 +46,16 @@ productsForm.addEventListener('submit', (e) => {
         })
     }
 
-
-
+    
 
     productsForm.reset()
 
 })
+
+
+
+
+
 
 /* file inputt */
 function readURL(input) {
