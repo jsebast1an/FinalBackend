@@ -26,9 +26,14 @@
 .chatContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .profileImg {
     max-width: 200px;
     height:auto;
+}
+.logContainer {
+    min-width: 1000px;
 }

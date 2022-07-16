@@ -4,6 +4,7 @@ import loginRouter from "./routes/login.js"
 import loggedRouter from "./routes/logged.js"
 import logoutRouter from "./routes/logout.js"
 import productsRouter from "./routes/Products.js"
+import publishRouter from "./routes/publishProduct/products.js"
 import cartsRouter from "./routes/Carts.js"
 import passport from "passport"
 import { Server } from "socket.io"
@@ -29,6 +30,8 @@ app.use('/logout', logoutRouter)
 
 app.use('/api/products', productsRouter)
 app.use('/api/carts', cartsRouter)
+
+app.use('/products', publishRouter)
 
 /* SERVER */
 const server = app.listen(PORT, () => console.log('Listening'))

@@ -1,6 +1,6 @@
 /* LOGIN.HTML */
 
-const registerForm = document.getElementById('registerForm')
+let registerForm = document.getElementById('registerForm')
 const username = document.getElementById('username')
 const password = document.getElementById('password')
 /* const checkbox = document.getElementById('checkbox') */

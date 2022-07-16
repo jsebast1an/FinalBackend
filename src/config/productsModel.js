@@ -19,7 +19,7 @@ const productsSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
-    thumbnail:String,
+    img:String,
 })
 
 const productsServiceSchema = mongoose.model(productsCollection, productsSchema)
