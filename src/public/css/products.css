@@ -6,45 +6,58 @@
   
 body {
     color: #124;
-    background-image: 
-        radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw),
-        radial-gradient(rgba(green, 0.3), rgba(green, 0) 40vw),
-        radial-gradient(rgba(blue, 0.3), rgba(blue, 0) 40vw),
-        radial-gradient(rgba(yellow, 0.3), rgba(yellow, 0) 40vw),
-        radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw);
-    background-position:
-        -40vw 14rem,
-        50% 10rem,
-        60vw 14rem,
-        -10vw calc(14rem + 20vw),
-        30vw calc(14rem + 20vw);
-        background-size: 80vw 80vw;
-        background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('https://img.freepik.com/foto-gratis/disposicion-elementos-naturaleza-muerta-verano_23-2148968974.jpg?w=1380&t=st=1658329835~exp=1658330435~hmac=587dec608581eefbef04ca5473e9ea52c5bc022137d44e7dec276f60496dc84a');
 }
-
+.container .card.my-5 {
+    backdrop-filter: blur(5px);
+    background-color: #ffffffe0;
+}
 .productsContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-content: center;
+    /* justify-content: center; */
+    align-items: center;
 }
-
-.profileImg {
-    max-width: 200px;
-    height:auto;
-}
-
 #productsForm {
     padding: 0.2rem 1.5rem;
-    max-width: 300px;
+    min-width: 300px;
     margin: 1rem 1rem 0;
-    box-shadow: 0 0 1em #4f1872;
+    box-shadow: 0 0 1em #94b3d1;
     border-radius: 5px;
     color: #6654769e;
+    background-color: #ffdd73;
+    background-image: linear-gradient(90deg, #ffdd73 0%, #ffa370 100%);
+
+}
+#productsBox {
+    padding: 0.2rem 1.5rem;
+    max-width: 90vw;
+    min-width: 300px;
+    margin: 1rem 1rem 0;
+    box-shadow: 0 0 1em #94b3d1;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #fdefce;      
+    background-image: linear-gradient(90deg, #fdefce 0%, #ffe2d6 100%);
+
+}
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .input_group {
-    margin: 1rem;
+    margin: 0.55rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .input_group label {
@@ -59,16 +72,37 @@ body {
 	width: 100%;
 	outline: none
 }
-/* INPUT FILE */
+.button_group {
+    display: flex;
+    justify-content: center;
+    outline: none;
+}
+.button_group_button {
+    padding: 12px 32px;
+    border-radius: 10px;
+    border: transparent;
+    background-color:rgb(61, 37, 14);
+    color: whitesmoke;
+}
+#errors {
+    color: rgb(153, 53, 53)
+}
+
+
+
+
+    /* INPUT FILE */
 .input-file {
-    padding: 30px;
+    padding: 5px;
     display: flex;
     max-width: 300px;
-    margin: 0 auto;
+    margin: 0 10px;
     background: #ffffff;
     box-shadow: 0px 10px 10px 0px rgb(0 0 0 / 0%);
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    background-color: transparent;
 }
 .upload-img {
     border-radius: 100%;
@@ -80,6 +114,7 @@ body {
     border: 3px solid #20e5bf;
     vertical-align: middle;
     background-color: #00000066;
+    margin: 5px;
 }
 .input-file-upload {
     position: relative;
@@ -112,7 +147,19 @@ position: absolute;
     background: #eaf5fe;
     color: #3b70f1;
 }
-
-#errors {
-    color: rgb(153, 53, 53)
-}
+/* ANIMATIONS */
+/* Glow */
+.hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }

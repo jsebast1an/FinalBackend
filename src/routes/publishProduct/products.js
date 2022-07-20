@@ -4,6 +4,7 @@ import MongoStore from "connect-mongo"
 import {io} from "../../app.js"
 import {__dirname} from "../../app.js"
 import dotenv from "dotenv"
+import { productDao } from "../../DAOs/index.js"
 dotenv.config()
 const router = express.Router()
 
@@ -22,24 +23,23 @@ router.use(session({
 }))
 
 /* Products */
-router.get('/', (req, res)=> {
+router.get('/', async (req, res)=> {
     let user = req.session.user
-    io.on('connection', socket => {
-        socket.on('sendProd', data => {
-            console.log(data)
-        })
-    }) 
+
     if(user) return res.sendFile('/public/html/products.html', { root: __dirname })
     res.redirect('/login')
 })
 
-/* router.post('/', passport.authenticate('login', {failureRedirect:'/'}), (req, res)=> {
-    let user = req.body
-    req.session.user = user
+router.post('/', async (req, res)=> {
+    let products = await productDao.getAll()
     io.on('connection', socket => {
-        socket.emit('user', user)
-    })
-    res.redirect('/logged')    
+        socket.on('sendProd', data => {
+            console.log(data)
+            const all = products
+            io.emit('all', all)
+        })
+    }) 
+    res.redirect('/products')
 })
- */
+
 export default router
