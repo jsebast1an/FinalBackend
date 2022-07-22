@@ -1,7 +1,7 @@
 import express from 'express'
-import { productDao } from '../DAOs/index.js'
-import adminMiddleware from '../middlewares/Admin.js'
-import uploader from '../services/Upload.js'
+import { productDao } from '../../DAOs/index.js'
+import adminMiddleware from '../../middlewares/Admin.js'
+import uploader from '../../services/Upload.js'
 const router = express.Router()
 
 /* CREATE PRODUCTO */

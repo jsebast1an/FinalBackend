@@ -82,7 +82,7 @@ function listProducts() {
             productsBox.prepend(div)
             div.innerHTML =
             `
-            <img src="${prod.thumbnail}" class="card-img-top" alt="...">
+            <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${prod.name}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

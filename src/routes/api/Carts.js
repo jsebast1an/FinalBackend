@@ -1,5 +1,5 @@
 import express from 'express'
-import { cartDao } from '../DAOs/index.js'
+import { cartDao } from '../../DAOs/index.js'
 
 const router = express.Router()
 
