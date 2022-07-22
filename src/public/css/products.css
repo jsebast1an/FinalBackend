@@ -24,7 +24,7 @@ body {
     align-items: center;
 }
 #productsForm {
-    padding: 0.2rem 1.5rem;
+    padding: 0.2rem 0.5rem;
     min-width: 300px;
     margin: 1rem 1rem 0;
     box-shadow: 0 0 1em #94b3d1;
@@ -53,26 +53,36 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
 }
 .input_group {
     margin: 0.55rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    background: wheat;
+    padding: 0px 30px 30px 30px;
+    border-radius: 10px;
+    background-color: #3b391c;
+    background-image: linear-gradient(270deg, #3b391c 0%, #714700 100%);
+    color: lightgray;
 }
 
 .input_group label {
     display: block;
 	font-size: 1.6em;
 	margin: 0 0 .5em;
-	color: #333;
+	color: lightgray;
+    font-weight: 600;
 }
 
 .input_group input {
     display: block;
 	width: 100%;
 	outline: none
+}
+.input_group span {
+    margin: 0.5rem 0;
 }
 .button_group {
     display: flex;
@@ -98,7 +108,7 @@ body {
     padding: 5px;
     display: flex;
     max-width: 300px;
-    margin: 0 10px;
+    margin: 1rem 10px;
     background: #ffffff;
     box-shadow: 0px 10px 10px 0px rgb(0 0 0 / 0%);
     flex-wrap: wrap;

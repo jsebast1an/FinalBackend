@@ -6,6 +6,8 @@ let price = document.getElementById('price')
 let img = document.getElementById('img')
 let productsForm = document.getElementById('productsForm')
 
+
+/* CREATE PRODUCT */
 productsForm.addEventListener('submit', (e) => {
     e.preventDefault()
     let formData = new FormData(productsForm)
@@ -56,7 +58,7 @@ productsForm.addEventListener('submit', (e) => {
 })
 
 
-
+/* READ PRODUCT */
 let products;
 async function getUserAsync() 
 {
@@ -68,11 +70,6 @@ async function getUserAsync()
 getUserAsync()
 
 function listProducts() {
-
-    /* fetch('http://localhost:8080/api/products')
-    .then(response => response.json())
-    .then(data => products = data.products.payload)
-    .catch(err => console.error(err)) */
     if (products.length > 0) {
         productsBox.innerHTML = ''
         products.forEach( prod => {

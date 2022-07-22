@@ -11,17 +11,32 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/adda471c88.js" crossorigin="anonymous"></script>
     <script defer src="../js/products.js"></script>
     <link rel="stylesheet" href="../css/products.css" >
 </head>
 <body>
     <div class="container">
         <div class="card my-5">
-            <div class="card-header d-flex justify-content-around text-center">
+            <div class="card-header d-flex justify-content-between text-center align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Menu
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+
                 <h1 class="animate__animated animate__flipInX">
                     Product's List
                 </h1>
+
+                <a href="/logout" class="btn btn-danger animate__animated animate__flipInX">Log out <i class="mx-1 fa-solid fa-arrow-right-from-bracket"></i></a>
+                
                 
             </div>
                 
@@ -34,12 +49,16 @@
                         <ul id="errors"></ul>
                         <div class="inputContainer">
                             <div class="input_group">
-                                <label for="name">Name</label>
+                                <label for="name">
+                                    Name
+                                </label>
                                 <input id="name" name="name" type="text">
                                 <span class="right">Enter name no longer than 5 characters</span>
                             </div class="input_group">
                             <div class="input_group">
-                                <label for="price">Price</label>
+                                <label for="price">
+                                    Price
+                                </label>
                                 <input id="price" name="price" type="number">
                                 <span class="right">Enter a price in format: 999,99</span>
                             </div class="input_group">
@@ -48,13 +67,11 @@
                                 <input id="stock" name="stock" type="number">
                                 <span class="right">Please only number characters</span>
                             </div class="input_group">
-                            <div class="input_group">
-                                <div class="input-file">
-                                    <img id="file_upload" alt="your img" class="upload-img" />
-                                    <div class="input-file-upload">
-                                        <span class="upload-label">Upload Image</span>
-                                        <input id="file" name="file" type='file' onchange="readURL(this);" />
-                                    </div>
+                            <div class="input-file">
+                                <img id="file_upload" alt="your img" class="upload-img" />
+                                <div class="input-file-upload">
+                                    <span class="upload-label">Upload Image</span>
+                                    <input id="file" name="file" type='file' onchange="readURL(this);" />
                                 </div>
                             </div>
                         </div>
@@ -77,9 +94,9 @@
                 
             
             
-            <div class="card-footer d-flex justify-content-around">
-                <a href="/logout" class="btn btn-danger">Log out</a>
-                <a href="/" class="btn btn-warning" >Home</a>
+            <div class="card-footer d-flex justify-content-between">
+                <a href="/logged" class="btn btn-danger"><i class="mx-1 fa-solid fa-arrow-left-long"></i></i> Back</a>
+                <a href="#" class="btn btn-warning" ><i class="mx-1 fa-solid fa-arrow-up-long"></i>&nbspGo up</a>
             </div>
         </div>
     </div>
