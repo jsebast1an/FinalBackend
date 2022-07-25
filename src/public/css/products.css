@@ -11,7 +11,9 @@ body {
 }
 
 /* ////////////////////////////////////////////////////////////////// */
-
+#errors {
+    color: rgb(153, 53, 53)
+}
 .container .card.my-5 {
     backdrop-filter: blur(5px);
     background-color: #ffffffe0;
@@ -78,11 +80,13 @@ body {
 
 .input_group input {
     display: block;
-	width: 100%;
+	width: 200px;
 	outline: none
 }
 .input_group span {
     margin: 0.5rem 0;
+    max-width: 200px;
+    font-size: 12px;
 }
 .button_group {
     display: flex;
@@ -96,14 +100,16 @@ body {
     background-color:rgb(61, 37, 14);
     color: whitesmoke;
 }
-#errors {
-    color: rgb(153, 53, 53)
+.buttonsContainer {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 
 
 
-    /* INPUT FILE */
+
+/* INPUT FILE */
 .input-file {
     padding: 5px;
     display: flex;
@@ -135,21 +141,21 @@ body {
     margin-top: 10px;
 }
 .input-file-upload input[type="file"] {
-opacity: 0;
-padding: 10px 0;
-height:36px;
-width: 150px;
+    opacity: 0;
+    padding: 10px 0;
+    height:36px;
+    width: 150px;
 }
 
 .upload-label {
-width: 150px;
-height: 36px;
-background: #3b70f1;
-text-align: center;
-color: #ffffff;
-display: block;
-padding: 8px 0;
-position: absolute;
+    width: 150px;
+    height: 36px;
+    background: #3b70f1;
+    text-align: center;
+    color: #ffffff;
+    display: block;
+    padding: 8px 0;
+    position: absolute;
     line-height: normal;
     font-size: 14px;
     font-weight: 700;

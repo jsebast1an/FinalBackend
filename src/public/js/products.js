@@ -71,6 +71,7 @@ getUserAsync()
 
 function listProducts() {
     if (products.length > 0) {
+        console.log(products);
         productsBox.innerHTML = ''
         products.forEach( prod => {
             const div = document.createElement('div')
@@ -89,17 +90,25 @@ function listProducts() {
                 <li class="list-group-item">Stock: ${prod.stock} unidades</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="btn btn-primary">Add cart</a>
+                <div class="buttonsContainer">
+
+                    <button class="btn btn-danger" onclick="deleteProduct(${prod.price})">Delete</button>
+                    <button class="btn btn-warning">Add stock</button>
+                    <button class="btn btn-success">Add cart</button>
+                </div>
+
             </div>
             `
         })
     }
 }
 
+/* DELETE PRODUCT*/
 
-
-
-
+function deleteProduct(id) {
+    const idString = id.toString()
+    console.log(idString);
+}
 
 
 
