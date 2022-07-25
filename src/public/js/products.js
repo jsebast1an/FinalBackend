@@ -61,11 +61,13 @@ productsForm.addEventListener('submit', (e) => {
 /* READ PRODUCT */
 let products;
 async function getUserAsync() 
-{
-  let response = await fetch(`http://localhost:8080/api/products`);
-  let data = await response.json()
-  products = data.products.payload
-  return data;
+{   
+    const testURL = 'http://localhost:8080/api/products'
+    const productionURL = 'https://lopez18335.herokuapp.com/api/products'
+    let response = await fetch(productionURL);
+    let data = await response.json()
+    products = data.products.payload
+    return data;
 }
 getUserAsync()
 
