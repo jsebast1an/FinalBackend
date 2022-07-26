@@ -31,6 +31,7 @@ passport.use('signup', new LocalStrategy(
             if(user) return done(null, false, {message:'user already exists'})
             const newUser = {
                 email:req.body.email,
+                phone:req.body.phone,
                 username:username,
                 password:createHash(password),
             }
@@ -55,8 +56,11 @@ passport.use('login', new LocalStrategy(
         try {
             const [userFound] = await userModel.find({username})
             if(userFound) {
-                if(!comparePassword(password, userFound.password)) { done(null, false, {error:'error en contraseña'})}
-                done(null, userFound)
+                if(!comparePassword(password, userFound.password)) { 
+                    done(null, false, {error:'error en contraseña'})
+                } else {
+                    done(null, userFound)
+                }
             } else {
                 done(null, false, {message:'no llegó'})
             }
