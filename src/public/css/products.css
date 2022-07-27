@@ -68,6 +68,7 @@ body {
     background-color: #3b391c;
     background-image: linear-gradient(270deg, #3b391c 0%, #714700 100%);
     color: lightgray;
+    height: 125px;
 }
 
 .input_group label {

@@ -1,6 +1,7 @@
 const productsBox = document.getElementById('productsBox')
 const errors = document.getElementById('errors')
 let namee = document.getElementById('name')
+let category = document.getElementById('category')
 let stock = document.getElementById('stock')
 let price = document.getElementById('price')
 let img = document.getElementById('img')
@@ -19,6 +20,9 @@ productsForm.addEventListener('submit', (e) => {
     if (namee.value == '' || namee.value == null) {
         messages.push('Name is required')
     } 
+    if (namee.value == '' || namee.value == null) {
+        messages.push('Category is required')
+    } 
     if (price.value == '' || price.length < 2) {
         messages.push('Price is required')
     } 
@@ -36,7 +40,9 @@ productsForm.addEventListener('submit', (e) => {
     } else {
         e.preventDefault()
         errors.innerText = ''
-        fetch('http://localhost:8080/api/products', {
+        const testURL = 'http://localhost:8080/api/products'
+        const productionURL = 'https://lopez18335.herokuapp.com/api/products'
+        fetch( testURL, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(obj), // data can be `string` or {object}!
             headers:{
@@ -64,7 +70,7 @@ async function getUserAsync()
 {   
     const testURL = 'http://localhost:8080/api/products'
     const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-    let response = await fetch(productionURL);
+    let response = await fetch(testURL);
     let data = await response.json()
     products = data.products.payload
     return data;
