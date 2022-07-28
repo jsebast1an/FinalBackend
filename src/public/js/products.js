@@ -15,7 +15,6 @@ productsForm.addEventListener('submit', (e) => {
     let obj = {}
     let messages = []
     formData.forEach((val, key) => obj[key] = val)
-    console.log(obj);
     
     if (namee.value == '' || namee.value == null) {
         messages.push('Name is required')
@@ -80,7 +79,6 @@ getProductsAsync()
 
 function listProducts() {
     if (products.length > 0) {
-        console.log(products);
         productsBox.innerHTML = ''
         products.forEach( prod => {
             const div = document.createElement('div')
@@ -101,7 +99,7 @@ function listProducts() {
             </ul>
             <div class="card-body">
                 <div class="buttonsContainer">
-                    <button class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
                     <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
                     <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
@@ -119,7 +117,13 @@ function deleteProduct(prodId) {
     if (prodFound) {
         console.log(prodFound);
         console.log(prodId);
-
+        const btnDelete = document.getElementById(`btnDelete${prodId}`)
+        btnDelete.innerHTML = 
+        `
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
         fetch( testURL + '/' + prodFound._id, {
