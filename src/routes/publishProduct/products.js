@@ -1,10 +1,8 @@
 import express from "express"
 import session from "express-session"
 import MongoStore from "connect-mongo"
-import {io} from "../../app.js"
 import {__dirname} from "../../app.js"
 import dotenv from "dotenv"
-import { productDao } from "../../DAOs/index.js"
 dotenv.config()
 const router = express.Router()
 
@@ -28,18 +26,6 @@ router.get('/', async (req, res)=> {
 
     if(user) return res.sendFile('/public/html/products.html', { root: __dirname })
     res.redirect('/login')
-})
-
-router.post('/', async (req, res)=> {
-    let products = await productDao.getAll()
-    io.on('connection', socket => {
-        socket.on('sendProd', data => {
-            console.log(data)
-            const all = products
-            io.emit('all', all)
-        })
-    }) 
-    res.redirect('/products')
 })
 
 export default router

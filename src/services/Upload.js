@@ -1,12 +1,14 @@
 import multer from "multer"
-import {__dirname} from "../app.js"
+import path from 'path';
+const __dirname = path.resolve();
 
 let storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, __dirname + '/public/imgs')
+        cb(null, __dirname + '/src/public/imgs')
     },
     filename: function(req, file, cb){
-         cb(null, Date.now()+"-"+file.originalname)
+        console.log(file);
+        cb(null, Date.now()+"-"+file.originalname)
     }
 })
 
