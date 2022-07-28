@@ -48,7 +48,7 @@ productsForm.addEventListener('submit', (e) => {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( testURL, {
+        fetch( productionURL, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(obj), // data can be `string` or {object}!
             headers:{
@@ -78,7 +78,7 @@ async function getProductsAsync()
 {   
     const testURL = 'http://localhost:8080/api/products'
     const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-    let response = await fetch( testURL);
+    let response = await fetch( productionURL);
     let data = await response.json()
     products = data.products.payload
     return data;
@@ -145,7 +145,7 @@ function deleteProduct(prodId) {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( testURL + '/' + prodFound._id, {
+        fetch( productionURL + '/' + prodFound._id, {
             method: 'DELETE',
         })
         .then(res => res.json())
