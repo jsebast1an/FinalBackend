@@ -4,6 +4,8 @@
     padding: 0;
 }
 body {
+    display: flex;
+    justify-content: center;
     color: #124;
     background-position: center;
     background-size: contain;
@@ -14,9 +16,10 @@ body {
 #errors {
     color: rgb(153, 53, 53)
 }
-.container .card.my-5 {
+.cardContainer {
     backdrop-filter: blur(5px);
     background-color: #ffffffe0;
+    max-width: 1200px;
 }
 .productsContainer {
     display: flex;

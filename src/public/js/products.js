@@ -48,15 +48,16 @@ productsForm.addEventListener('submit', (e) => {
             headers:{
               'Content-Type': 'application/json'
             }
-          }).then(res => res.json())
-          .then(response => {
-            getUserAsync()
+        })
+        .then(res => res.json())
+        .then(response => {
+            getProductsAsync()
             setTimeout(() => {
                 listProducts()
             }, 1000);
             console.log('Success:', response)
-          }) 
-          .catch(error => console.error('Error:', error))
+        }) 
+        .catch(error => console.error('Error:', error))
     }
     
     productsForm.reset()
@@ -66,16 +67,16 @@ productsForm.addEventListener('submit', (e) => {
 
 /* READ PRODUCT */
 let products;
-async function getUserAsync() 
+async function getProductsAsync() 
 {   
     const testURL = 'http://localhost:8080/api/products'
     const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-    let response = await fetch(testURL);
+    let response = await fetch( testURL);
     let data = await response.json()
     products = data.products.payload
     return data;
 }
-getUserAsync()
+getProductsAsync()
 
 function listProducts() {
     if (products.length > 0) {
@@ -85,6 +86,7 @@ function listProducts() {
             const div = document.createElement('div')
             div.className = 'card text-center my-3 hvr-glow'
             div.style.width = '350px'
+            div.style.margin = '8px'
             productsBox.prepend(div)
             div.innerHTML =
             `
@@ -99,10 +101,9 @@ function listProducts() {
             </ul>
             <div class="card-body">
                 <div class="buttonsContainer">
-
-                    <button class="btn btn-danger" onclick="deleteProduct(${prod.price})">Delete</button>
-                    <button class="btn btn-warning">Add stock</button>
-                    <button class="btn btn-success">Add cart</button>
+                    <button class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
 
             </div>
@@ -113,9 +114,27 @@ function listProducts() {
 
 /* DELETE PRODUCT*/
 
-function deleteProduct(id) {
-    const idString = id.toString()
-    console.log(idString);
+function deleteProduct(prodId) {
+    const prodFound = products.find(product => product.id == prodId)
+    if (prodFound) {
+        console.log(prodFound);
+        console.log(prodId);
+
+        const testURL = 'http://localhost:8080/api/products'
+        const productionURL = 'https://lopez18335.herokuapp.com/api/products'
+        fetch( testURL + '/' + prodFound._id, {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(response => {
+            getProductsAsync()
+            setTimeout(() => {
+                listProducts()
+            }, 500);
+            console.log('Success:', response)
+        }) 
+        .catch(error => console.error('Error:', error))
+    }
 }
 
 

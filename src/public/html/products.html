@@ -17,98 +17,96 @@
     <link rel="stylesheet" href="../css/products.css" >
 </head>
 <body>
-    <div class="container">
-        <div class="card my-5">
-            <div class="card-header d-flex justify-content-between text-center align-items-center">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Menu
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="/">Home</a></li>
-                      <li><a class="dropdown-item" href="/logged">Chat</a></li>
-                      <li><a class="dropdown-item" href="">Chart</a></li>
-                      <li><a class="dropdown-item" href="/">Contact</a></li>
-                    </ul>
-                </div>
-
-                <h1 class="animate__animated animate__flipInX">
-                    Product's List
-                </h1>
-
-                <a href="/logout" class="btn btn-danger animate__animated animate__flipInX">Log out <i class="mx-1 fa-solid fa-arrow-right-from-bracket"></i></a>
-                
-                
+    <div class="cardContainer card my-5">
+        <div class="card-header d-flex justify-content-between text-center align-items-center">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="/">Home</a></li>
+                    <li><a class="dropdown-item" href="/logged">Chat</a></li>
+                    <li><a class="dropdown-item" href="">Chart</a></li>
+                    <li><a class="dropdown-item" href="/">Contact</a></li>
+                </ul>
             </div>
-                
-            <div id="contentContainer">
-                <!--  <img class="profileImg" href="../imgs/1646611653322-large.png" alt="foto perfil"> -->
-                
 
-                <div class="productsContainer card-body">
-                    <form id="productsForm" class="animate__animated animate__flipInX" action="/products" method="post">
-                        <ul id="errors"></ul>
-                        <div class="inputContainer">
-                            <div class="input_group">
-                                <label for="name">
-                                    Name
-                                </label>
-                                <input id="name" name="name" type="text">
-                                <span class="right">No longer than 15 characters</span>
-                            </div class="input_group">
-                            <div class="input_group">
-                                <label for="category">
-                                    Category
-                                </label>
-                                <select id="category" name="category" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>Select category</option>
-                                    <option value="shoes">Shoes</option>
-                                    <option value="clothing">Clothing</option>
-                                </select>
-                            </div class="input_group">
-                            <div class="input_group">
-                                <label for="price">
-                                    Price
-                                </label>
-                                <input id="price" name="price" type="number">
-                                <span class="right">Enter a price in format: 999,99</span>
-                            </div class="input_group">
-                            <div class="input_group">
-                                <label for="stock">Stock</label>
-                                <input id="stock" name="stock" type="number">
-                                <span class="right">Please only number characters</span>
-                            </div class="input_group">
-                            <div class="input-file">
-                                <img id="file_upload" alt="your img" class="upload-img" />
-                                <div class="input-file-upload">
-                                    <span class="upload-label">Upload Image</span>
-                                    <input id="file" name="file" type='file' onchange="readURL(this);" />
-                                </div>
+            <h1 class="animate__animated animate__flipInX">
+                Product's List
+            </h1>
+
+            <a href="/logout" class="btn btn-danger animate__animated animate__flipInX">Log out <i class="mx-1 fa-solid fa-arrow-right-from-bracket"></i></a>
+            
+            
+        </div>
+            
+        <div id="contentContainer">
+            <!--  <img class="profileImg" href="../imgs/1646611653322-large.png" alt="foto perfil"> -->
+            
+
+            <div class="productsContainer card-body">
+                <form id="productsForm" class="animate__animated animate__flipInX" action="/products" method="post">
+                    <ul id="errors"></ul>
+                    <div class="inputContainer">
+                        <div class="input_group">
+                            <label for="name">
+                                Name
+                            </label>
+                            <input id="name" name="name" type="text">
+                            <span class="right">No longer than 15 characters</span>
+                        </div class="input_group">
+                        <div class="input_group">
+                            <label for="category">
+                                Category
+                            </label>
+                            <select id="category" name="category" class="form-select" aria-label="Default select example">
+                                <option selected disabled>Select category</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="clothing">Clothing</option>
+                            </select>
+                        </div class="input_group">
+                        <div class="input_group">
+                            <label for="price">
+                                Price
+                            </label>
+                            <input id="price" name="price" type="number">
+                            <span class="right">Enter a price in format: 999,99</span>
+                        </div class="input_group">
+                        <div class="input_group">
+                            <label for="stock">Stock</label>
+                            <input id="stock" name="stock" type="number">
+                            <span class="right">Please only number characters</span>
+                        </div class="input_group">
+                        <div class="input-file">
+                            <img id="file_upload" alt="your img" class="upload-img" />
+                            <div class="input-file-upload">
+                                <span class="upload-label">Upload Image</span>
+                                <input id="file" name="file" type='file' onchange="readURL(this);" />
                             </div>
                         </div>
-                        <div class="button_group mb-3">
-                            <input type="submit" id="submit" value="Publicar" class="button_group_button">
-                        </div class="input_group">
-                    </form>
+                    </div>
+                    <div class="button_group mb-3">
+                        <input type="submit" id="submit" value="Publicar" class="button_group_button">
+                    </div class="input_group">
+                </form>
 
-                    <div id="productsBox" class="animate__animated animate__flipInX">
-                        <div class="staticContainer p-5">
-                            <h3>Publish a product or just list the products available
-                                <div class="button_group m-4">
-                                    <button onclick="listProducts()" class="button_group_button" type="submit">List products</button>
-                                </div class="input_group">
-                            </h3>
-                        </div>
+                <div id="productsBox" class="animate__animated animate__flipInX">
+                    <div class="staticContainer p-5">
+                        <h3>Publish a product or just list the products available
+                            <div class="button_group m-4">
+                                <button onclick="listProducts()" class="button_group_button" type="submit">List products</button>
+                            </div class="input_group">
+                        </h3>
                     </div>
                 </div>
             </div>
-                
+        </div>
             
-            
-            <div class="card-footer d-flex justify-content-between">
-                <a href="/logged" class="btn btn-danger"><i class="mx-1 fa-solid fa-arrow-left-long"></i></i> Back</a>
-                <a href="#" class="btn btn-warning" ><i class="mx-1 fa-solid fa-arrow-up-long"></i>&nbspGo up</a>
-            </div>
+        
+        
+        <div class="card-footer d-flex justify-content-between">
+            <a href="/logged" class="btn btn-danger"><i class="mx-1 fa-solid fa-arrow-left-long"></i></i> Back</a>
+            <a href="#" class="btn btn-warning" ><i class="mx-1 fa-solid fa-arrow-up-long"></i>&nbspGo up</a>
         </div>
     </div>
 
