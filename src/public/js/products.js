@@ -79,34 +79,43 @@ getProductsAsync()
 
 function listProducts() {
     if (products.length > 0) {
-        productsBox.innerHTML = ''
-        products.forEach( prod => {
-            const div = document.createElement('div')
-            div.className = 'card text-center my-3 hvr-glow'
-            div.style.width = '350px'
-            div.style.margin = '8px'
-            productsBox.prepend(div)
-            div.innerHTML =
-            `
-            <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${prod.name}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        const btnListProducts = document.getElementById('btnListProducts')
+        btnListProducts.innerHTML = 
+        `
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Precio: ${prod.price},00$</li>
-                <li class="list-group-item">Stock: ${prod.stock} unidades</li>
-            </ul>
-            <div class="card-body">
-                <div class="buttonsContainer">
-                    <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
-                    <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
+        `
+        setTimeout(() => {
+            productsBox.innerHTML = ''
+            products.forEach( prod => {
+                const div = document.createElement('div')
+                div.className = 'card text-center my-3 hvr-glow'
+                div.style.width = '350px'
+                div.style.margin = '8px'
+                productsBox.prepend(div)
+                div.innerHTML =
+                `
+                <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${prod.name}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-
-            </div>
-            `
-        })
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Precio: ${prod.price},00$</li>
+                    <li class="list-group-item">Stock: ${prod.stock} unidades</li>
+                </ul>
+                <div class="card-body">
+                    <div class="buttonsContainer">
+                        <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+    
+                </div>
+                `
+            })
+        }, 500);
     }
 }
 
