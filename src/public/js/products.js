@@ -39,6 +39,13 @@ productsForm.addEventListener('submit', (e) => {
     } else {
         e.preventDefault()
         errors.innerText = ''
+        const btnPost = document.getElementById('btnPost')
+        btnPost.innerHTML = 
+        `
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
         fetch( testURL, {
@@ -53,7 +60,8 @@ productsForm.addEventListener('submit', (e) => {
             getProductsAsync()
             setTimeout(() => {
                 listProducts()
-            }, 1000);
+                btnPost.innerText = 'Post product'
+            }, 500);
             console.log('Success:', response)
         }) 
         .catch(error => console.error('Error:', error))
@@ -80,12 +88,14 @@ getProductsAsync()
 function listProducts() {
     if (products.length > 0) {
         const btnListProducts = document.getElementById('btnListProducts')
-        btnListProducts.innerHTML = 
-        `
-            <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-            </div>
-        `
+        if (btnListProducts) {
+            btnListProducts.innerHTML = 
+            `
+                <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+                </div>
+            `
+        }
         setTimeout(() => {
             productsBox.innerHTML = ''
             products.forEach( prod => {
@@ -115,7 +125,7 @@ function listProducts() {
                 </div>
                 `
             })
-        }, 500);
+        }, 300);
     }
 }
 
