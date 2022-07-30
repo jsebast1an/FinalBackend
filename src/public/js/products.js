@@ -7,6 +7,7 @@ let price = document.getElementById('price')
 let img = document.getElementById('img')
 let productsForm = document.getElementById('productsForm')
 
+let selectCategory = document.getElementById('selectCategory')
 
 /* CREATE PRODUCT */
 productsForm.addEventListener('submit', (e) => {
@@ -86,6 +87,9 @@ async function getProductsAsync()
 getProductsAsync()
 
 function listProducts() {
+    document.querySelector('.selectCategoryContainer').style.display = 'block'
+    document.querySelector('.selectCategoryContainer').classList = 'selectCategoryContainer animate__animated animate__flipInX'
+
     if (products.length > 0) {
         const btnListProducts = document.getElementById('btnListProducts')
         if (btnListProducts) {
@@ -113,6 +117,7 @@ function listProducts() {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Precio: ${prod.price},00$</li>
+                    <li class="list-group-item">Category: ${prod.category}</li>
                     <li class="list-group-item">Stock: ${prod.stock} unidades</li>
                 </ul>
                 <div class="card-body">
@@ -125,7 +130,7 @@ function listProducts() {
                 </div>
                 `
             })
-        }, 300);
+        }, 200);
     }
 }
 
@@ -161,7 +166,106 @@ function deleteProduct(prodId) {
 }
 
 
+selectCategory.addEventListener('change', () => {
+    if(selectCategory.value === 'shoes') {
+        productsBox.innerHTML = ''
+        let productsFiltered = products.filter(prod => prod.category === selectCategory.value)
+        console.log(productsFiltered);
+        productsFiltered.forEach( prod => {
+            const div = document.createElement('div')
+            div.className = 'card text-center my-3 hvr-glow'
+            div.style.width = '350px'
+            div.style.margin = '8px'
+            productsBox.prepend(div)
+            div.innerHTML =
+            `
+            <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${prod.name}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio: ${prod.price},00$</li>
+                <li class="list-group-item">Category: ${prod.category}</li>
+                <li class="list-group-item">Stock: ${prod.stock} unidades</li>
+            </ul>
+            <div class="card-body">
+                <div class="buttonsContainer">
+                    <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
 
+            </div>
+            `
+        })
+    }
+
+    if(selectCategory.value === 'clothing') {
+        productsBox.innerHTML = ''
+        let productsFiltered = products.filter(prod => prod.category === selectCategory.value)
+        productsFiltered.forEach( prod => {
+            const div = document.createElement('div')
+            div.className = 'card text-center my-3 hvr-glow'
+            div.style.width = '350px'
+            div.style.margin = '8px'
+            productsBox.prepend(div)
+            div.innerHTML =
+            `
+            <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${prod.name}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio: ${prod.price},00$</li>
+                <li class="list-group-item">Category: ${prod.category}</li>
+                <li class="list-group-item">Stock: ${prod.stock} unidades</li>
+            </ul>
+            <div class="card-body">
+                <div class="buttonsContainer">
+                    <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+
+            </div>
+            `
+        })
+    }
+
+    if (selectCategory.value === 'all' ) {
+        productsBox.innerHTML = ''
+        products.forEach( prod => {
+            const div = document.createElement('div')
+            div.className = 'card text-center my-3 hvr-glow'
+            div.style.width = '350px'
+            div.style.margin = '8px'
+            productsBox.prepend(div)
+            div.innerHTML =
+            `
+            <img src="https://media.beritagar.id/2018-10/710510154b7c8b4bea7adc10b279e90e4ed2d1c5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${prod.name}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio: ${prod.price},00$</li>
+                <li class="list-group-item">Category: ${prod.category}</li>
+                <li class="list-group-item">Stock: ${prod.stock} unidades</li>
+            </ul>
+            <div class="card-body">
+                <div class="buttonsContainer">
+                    <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+
+            </div>
+            `
+        })
+    }
+})
 
 
 

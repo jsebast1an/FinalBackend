@@ -46,7 +46,7 @@ const email_structure = {
 /* routes */
 router.get('/', (req, res) => {
     let user = req.session.user
-    if(user) return res.redirect('/logged')
+    if(user) return res.redirect('/products')
     res.sendFile('/public/html/signup.html', { root: __dirname })
 })
 
@@ -60,7 +60,7 @@ router.post('/', passport.authenticate('signup', {failureRedirect:'/'}), async (
     try {
         let info =  await transporter.sendMail(email_structure)
         console.log(info)
-        res.redirect('/logged')
+        res.redirect('/products')
     } catch (error) {
         res.send(`Email unable to send to ${TEST_EMAIL}`)
         console.log(error)

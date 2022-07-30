@@ -69,7 +69,7 @@
                                 Price
                             </label>
                             <input id="price" name="price" type="number">
-                            <span class="right">Enter a price in format: 999,99</span>
+                            <span class="right">Enter a price in format: 999</span>
                         </div class="input_group">
                         <div class="input_group">
                             <label for="stock">Stock</label>
@@ -89,9 +89,21 @@
                     </div class="input_group">
                 </form>
 
+                <div class="selectCategoryContainer" style="display: none;">
+                    <div class="form-floating">
+                        <select class="form-select" id="selectCategory" aria-label="Floating label select example">
+                          <option value="all" selected>All products</option>
+                          <option value="shoes">Shoes</option>
+                          <option value="clothing">Clothing</option>
+                        </select>
+                        <label for="floatingSelect">Select category</label>
+                      </div>
+                </div>
+
+
                 <div id="productsBox" class="animate__animated animate__flipInX">
                     <div class="staticContainer p-5">
-                        <h3>Publish a product or just list the products available
+                        <h3>Post a product or just list the products available
                             <div class="button_group m-4">
                                 <button id="btnListProducts" onclick="listProducts()" class="button_group_button" type="submit">List products</button>
                             </div class="input_group">

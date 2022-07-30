@@ -25,7 +25,7 @@ router.use(session({
 /* LOGIN */
 router.get('/', (req, res)=> {
     let user = req.session.user
-    if(user) return res.redirect('/logged')
+    if(user) return res.redirect('/products')
     res.sendFile('/public/html/login.html', { root: __dirname })
 })
 
@@ -35,7 +35,7 @@ router.post('/', passport.authenticate('login', {failureRedirect:'/'}), (req, re
     io.on('connection', socket => {
         socket.emit('user', user)
     })
-    res.redirect('/logged')    
+    res.redirect('/products') 
 })
 
 export default router
