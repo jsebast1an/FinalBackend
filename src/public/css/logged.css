@@ -22,15 +22,15 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-
 .profileImg {
     max-width: 200px;
     height:auto;
 }
 .logContainer {
+    width: 450px;
     border-radius: 10px;
     padding: 1rem 2rem;
-    margin: 0 1rem 1rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
     background-color: #fdefce;      
     background-image: linear-gradient(90deg, #fdefce 0%, #ffe2d6 100%);
 }

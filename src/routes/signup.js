@@ -59,7 +59,6 @@ router.post('/', passport.authenticate('signup', {failureRedirect:'/'}), async (
     /* send mail post */
     try {
         let info =  await transporter.sendMail(email_structure)
-        console.log(info)
         res.redirect('/products')
     } catch (error) {
         res.send(`Email unable to send to ${TEST_EMAIL}`)

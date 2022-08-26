@@ -3,6 +3,7 @@ const socket = io()
 /* const welcome = document.getElementById('welcome') */
 const chatMessage = document.getElementById('chatMessage')
 const usernameSaid = document.querySelector('.usernameSaid')
+const staticContainer = document.querySelector('.staticContainer')
 
 
 let user
@@ -27,8 +28,9 @@ socket.on("log", data => {
 chatMessage.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
         if (chatMessage.value.trim().length > 0 ) {
-            socket.emit("message", { message:chatMessage.value.trim()})
+            socket.emit("message", {message:chatMessage.value.trim()})
             chatMessage.value = ""
+            staticContainer.innerHTML = ""
         }
     }
 })

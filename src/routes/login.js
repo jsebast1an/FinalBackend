@@ -34,6 +34,7 @@ router.post('/', passport.authenticate('login', {failureRedirect:'/'}), (req, re
     req.session.user = user
     io.on('connection', socket => {
         socket.emit('user', user)
+        console.log(user);
     })
     res.redirect('/products') 
 })

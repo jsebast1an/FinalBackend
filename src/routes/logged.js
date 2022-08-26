@@ -20,13 +20,14 @@ router.use(session({
 
 let log = []
 router.get('/', (req, res) => {
-    const user = req.session.user
+    let user = ""
+    user = req.session.user
     io.on('connection', socket => {
         socket.on("message", data => {
             let newData = {...data, user}
             log.push(newData);
-            newData = ''
             io.emit('log', log);    
+            newData = ''
         } )
     })
 

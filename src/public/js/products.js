@@ -49,7 +49,7 @@ productsForm.addEventListener('submit', (e) => {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( productionURL, {
+        fetch( testURL, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(obj), // data can be `string` or {object}!
             headers:{
@@ -79,7 +79,7 @@ async function getProductsAsync()
 {   
     const testURL = 'http://localhost:8080/api/products'
     const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-    let response = await fetch( productionURL);
+    let response = await fetch( testURL)
     let data = await response.json()
     products = data.products.payload
     return data;
@@ -123,15 +123,119 @@ function listProducts() {
                 <div class="card-body">
                     <div class="buttonsContainer">
                         <button id="btnDelete${prod.id}" class="btn btn-danger" onclick="deleteProduct(${prod.id})">Delete <i class="fa-solid fa-trash-can"></i></button>
-                        <button class="btn btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-warning" onclick="openEditModal(${prod.id})">Edit <i class="fa-solid fa-pen-to-square"></i></button>
                         <button class="btn btn-success">Add cart <i class="fa-solid fa-cart-shopping"></i></button>
                     </div>
     
                 </div>
                 `
+
+                const div2 = document.createElement('div')
+                div2.className = 'modalEditContainer'
+                div2.id = `editForm${prod.id}`
+                document.body.appendChild(div2)
+                div2.innerHTML = 
+                `
+                <div class="modalEdit card">
+                    <div class="card-header text-center">
+                        <h3>Edit product</h3>
+                    </div>
+                    <form id="editForm2${prod.id}" class="productsForm2 animate__animated animate__flipInY">
+                        <ul id="errors2"></ul>
+                        <div class="inputContainer">
+                            <div class="input_group">
+                                <label for="name2">
+                                    Name
+                                </label>
+                                <input id="name2" name="name" value="${prod.name}" type="text">
+                                <span class="right">No longer than 15 characters</span>
+                            </div class="input_group">
+                            <div class="input_group">
+                                <label for="category2">
+                                    Category
+                                </label>
+                                <select class="form-select selectCategory2" aria-label="Floating label select example">
+                                    <option value="all" >All products</option>
+                                    <option value="shoes">Shoes</option>
+                                    <option value="clothing">Clothing</option>
+                                </select>
+
+                            </div class="input_group">
+                            <div class="input_group">
+                                <label for="price2">
+                                    Price
+                                </label>
+                                <input id="price2" name="price" value="${prod.price}" type="number">
+                                <span class="right">Enter a price in format: 999</span>
+                            </div class="input_group">
+                            <div class="input_group">
+                                <label for="stock2">Stock</label>
+                                <input id="stock2" name="stock" value="${prod.stock}" type="number">
+                                <span class="right">Please only number characters</span>
+                            </div class="input_group">
+                        </div>
+                        <div class="button_group mb-3">
+                            <button id="btnPut${prod.id}" onclick="editForm(event, ${prod.id})" class="button_group_button">Save</button>
+                        </div class="input_group">
+                    </form>
+
+                    <div class="card-footer">
+                        <div class="button_group">
+                            <button onclick="closeEditModal(${prod.id})" class="btn btn-danger">Close edit form</button>
+                        </div>
+                    </div>
+                </div>
+                `
             })
         }, 200);
     }
+}
+
+/* UPDATE PRODUCT */
+function openEditModal(formId) {
+    document.getElementById(`editForm${formId}`).classList.toggle('showEditModal')
+}
+function closeEditModal(formId) {
+    document.getElementById(`editForm${formId}`).classList.toggle('showEditModal')
+}
+
+function editForm(event, id) {
+    event.preventDefault()
+    let form = document.getElementById(`editForm2${id}`)
+    let formData = new FormData(form)
+    let obj = {}
+    formData.forEach((val, key) => obj[key] = val)
+
+    const btnPut = document.getElementById(`btnPut${id}`)
+    btnPut.innerHTML = 
+    `
+        <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+        </div>
+    `
+    const testURL = 'http://localhost:8080/api/products'
+    const productionURL = 'https://lopez18335.herokuapp.com/api/products'
+    const prodFound = products.find(product => product.id == id)
+
+
+    fetch( testURL + '/' + prodFound._id, {
+        method: 'PUT', // or 'PUT'
+        body: JSON.stringify(obj), // data can be `string` or {object}!
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        getProductsAsync()
+        setTimeout(() => {
+            listProducts()
+            btnPut.innerHTML = 'Editado <i class="fa-solid fa-check"></i>'
+            btnPut.style.backgroundColor = 'green'
+        }, 500);
+        console.log('Success:', response)
+    }) 
+    .catch(error => console.error('Error:', error))
 }
 
 /* DELETE PRODUCT*/
@@ -150,7 +254,7 @@ function deleteProduct(prodId) {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( productionURL + '/' + prodFound._id, {
+        fetch( testURL + '/' + prodFound._id, {
             method: 'DELETE',
         })
         .then(res => res.json())
