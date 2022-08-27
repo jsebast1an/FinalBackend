@@ -83,6 +83,7 @@ body {
     margin: 0.55rem;
     display: flex;
     flex-direction: column;
+    width: 260px;
     align-items: center;
     background: wheat;
     padding: 0px 30px 30px 30px;
@@ -103,8 +104,10 @@ body {
 
 .input_group input {
     display: block;
-	width: 200px;
-	outline: none
+    width: 200px;
+    outline: none;
+    border-radius: 10px;
+    padding: 2px 5px;
 }
 .input_group span {
     margin: 0.5rem 0;
@@ -130,7 +133,7 @@ body {
 select#selectCategory {
     min-width: 200px;
 }
-select.selectCategory {
+select.selectCategory2 {
     min-width: 200px;
 }
 
@@ -152,13 +155,23 @@ select.selectCategory {
 
 .modalEdit {
     background-color: color;
-    width: 450px;
+    max-width: 750px;
     height: auto;
 }
 
 .showEditModal {
     opacity: 1;
     pointer-events: all;
+}
+.two-sides {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.margin {
+    margin: 1.6rem;
 }
 
 /* INPUT FILE */
