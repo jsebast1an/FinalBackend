@@ -249,7 +249,7 @@ function editForm(event, id) {
     .catch(error => console.error('Error:', error))
 }
 
-/* DELETE PRODUCT*/
+/* DELETE PRODUC T*/
 
 function deleteProduct(prodId) {
     const prodFound = products.find(product => product.id == prodId)
