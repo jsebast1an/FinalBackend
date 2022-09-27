@@ -5,6 +5,8 @@ body {
     
     font-size:16px;
 }
+
+/* HEADER */
 *, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}
 a{text-decoration:none;color:#fff}
 #header{background:#1E262D;width:100%;position:relative}
@@ -63,7 +65,7 @@ nav li li a:hover{background:#bdc3c7;background:#FAFBFB}
 .logo img {
   border-radius: 50%;
 }
-
+/* END HEADER */
 
 .formContainer {
     background-color: rgba(245, 245, 220, 0.611);

@@ -13,25 +13,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/adda471c88.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="css/index.css">
+    
     <title>WELCOME</title>
+
 </head>
 <body>
+    
+    <div id="header">
+        <div class="logo">
+          <img src="../imgs/1659042231170-$.jpg" alt="logo" height="30px" >
+          <a href="#">X Project</a>
+        </div>  
+        <nav>
+          <form class="search" action="search.php"> 
+            <input name="q" placeholder="Search..." type="search">
+          </form>
+          <ul>
+            <li>
+              <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+            </li>
+            <li>
+              <a href="/signup">Sign Up</a>       
+            </li>
+            <li>
+              <a href="/login">Log In</a>       
+            </li>
+            <li class="dropdown">
+              <a href="https://github.com/jsebast1an/portfolio" target="_blank">Portfolio</a>
+                <ul>
+                  <li><a target="_blank" href="https://github.com/jsebast1an/portfolio">All projects <i class="fa-brands fa-github"></i></a></li>
+                  <li><a target="_blank" href="https://flamboyant-perlman-99b3f2.netlify.app/">React Store App <i class="fa-brands fa-react"></i></a></li>
+                  <li><a target="_blank" href="https://jsebast1an.github.io/LaFarola/">Static Web <i class="fa-solid fa-file-code"></i></a></li>
+                  <li><a target="_blank" href="https://jsebast1an.github.io/LaFarola2/">JS & HTML Store App <i class="fa-brands fa-square-js"></i></a></li>
+                </ul>        
+            </li>
+            <li>
+              <a href="">Products</a>
+            </li>
+            <li>
+              <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
     <div class="container d-flex" style="justify-content:center;">
         <div class="card my-5 animate__animated animate__bounceInLeft">
-            <div class="card-body text-center">
-                <div class="button_group">
-                    <a href="/login" class="btn btn-primary m-2">Log In</a>
-                    <a href="/signup" class="btn btn-primary m-2">Sign Up</a>
-                </div>
-                <nav class="m-2 animate__animated animate__flipInX" aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="/">Home</a></li>
-                      <li class="page-item"><a class="page-link" href="/products">Products</a></li>
-                      <li class="page-item"><a class="page-link" href="/">Cart</a></li>
-                      <li class="page-item"><a class="page-link" href="/logged">Chat</a></li>
-                      <li class="page-item"><a class="page-link" href="/">Contact</a></li>
-                    </ul>
-                </nav>
+            <div class="card-body flexColumnCenterContainer">
+                
             </div>
         </div>
     </div>
