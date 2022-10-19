@@ -1,3 +1,5 @@
+const socket = io()
+
 const productsBox = document.getElementById('productsBox')
 const errors = document.getElementById('errors')
 let namee = document.getElementById('name')
@@ -9,25 +11,53 @@ let productsForm = document.getElementById('productsForm')
 
 let selectCategory = document.getElementById('selectCategory')
 
+/* HEADER NAME con websocket */
+
+let user
+
+const nav_username = document.getElementById('nav_username')
+socket.on('user', data => {
+    console.log(data)
+    user = data
+    nav_username.innerText = `${user.username}`
+    nav_username.style.textTransform = 'capitalize'
+})
+
+socket.on("log", data => {
+    let log = document.getElementById("log")
+    console.log(data)
+    let messages = ""
+    data.forEach(message => {
+        messages = messages+ `<strong>${message.user.username} dice: </strong>${message.message} <br>`
+        log.innerHTML = messages;
+    });
+})
+
 /* CREATE PRODUCT */
 productsForm.addEventListener('submit', (e) => {
     e.preventDefault()
     let formData = new FormData(productsForm)
     let obj = {}
     let messages = []
+    const myFiles = document.getElementById('file').files
+    
     formData.forEach((val, key) => obj[key] = val)
     
     if (namee.value == '' || namee.value == null) {
         messages.push('Name is required')
+        namee.style.backgroundColor = '#ffcccb'
     } 
-    if (namee.value == '' || namee.value == null) {
+    if (category.value == '' || category.value == null) {
         messages.push('Category is required')
+        username.style.backgroundColor = '#ffcccb'
     } 
     if (price.value == '' || price.length < 2) {
         messages.push('Price is required')
+        username.style.backgroundColor = '#ffcccb'
     } 
     if (stock.value == '' || stock.length > 3) {
         messages.push('Stock: only 3 numbers are allowed')
+        username.style.backgroundColor = '#ffcccb'
     }
     if (messages.length > 0) {
         e.preventDefault()
@@ -49,7 +79,7 @@ productsForm.addEventListener('submit', (e) => {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( testURL, {
+        fetch( productionURL, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(obj), // data can be `string` or {object}!
             headers:{
@@ -79,7 +109,7 @@ async function getProductsAsync()
 {   
     const testURL = 'http://localhost:8080/api/products'
     const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-    let response = await fetch( testURL)
+    let response = await fetch( productionURL)
     let data = await response.json()
     products = data.products.payload
     return data;
@@ -229,7 +259,7 @@ function editForm(event, id) {
     const prodFound = products.find(product => product.id == id)
 
 
-    fetch( testURL + '/' + prodFound._id, {
+    fetch( productionURL + '/' + prodFound._id, {
         method: 'PUT', // or 'PUT'
         body: JSON.stringify(obj), // data can be `string` or {object}!
         headers:{
@@ -265,7 +295,7 @@ function deleteProduct(prodId) {
         `
         const testURL = 'http://localhost:8080/api/products'
         const productionURL = 'https://lopez18335.herokuapp.com/api/products'
-        fetch( testURL + '/' + prodFound._id, {
+        fetch( productionURL + '/' + prodFound._id, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -385,12 +415,15 @@ selectCategory.addEventListener('change', () => {
 
 
 
-
+const file = document.getElementById('file')
 
 
 
 /* file inputt */
 function readURL(input) {
+    const myFiles = file.files
+
+
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 

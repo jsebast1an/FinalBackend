@@ -1,7 +1,7 @@
 import express from "express"
 import session from "express-session"
 import MongoStore from "connect-mongo"
-import {__dirname} from "../../app.js"
+import {io, __dirname} from "../../app.js"
 import dotenv from "dotenv"
 dotenv.config()
 const router = express.Router()
@@ -23,7 +23,12 @@ router.use(session({
 /* Products */
 router.get('/', async (req, res)=> {
     let user = req.session.user
-
+    io.on('connection', socket => {
+        socket.on("user", data => {
+            let newData = {...data, user}
+            log.push(newData);
+        } )
+    })
     if(user) return res.sendFile('/public/html/products.html', { root: __dirname })
     res.redirect('/login')
 })

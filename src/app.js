@@ -12,8 +12,9 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 export const __dirname = dirname(fileURLToPath(import.meta.url));
 import './middlewares/passport.js'
+import multer from "multer"
 
-const app = express()
+export const app = express()
 const PORT = process.env.PORT || 8080
 
 /* MIDDLEWARES */
@@ -21,7 +22,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static(__dirname+'/public'))
 app.use(passport.initialize())
-
 /* ROUTES*/
 app.use('/signup', signupRouter)
 app.use('/login', loginRouter)
